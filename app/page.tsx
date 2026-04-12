@@ -2,6 +2,7 @@ import { AboutMe } from "@/components/homepage/about-me";
 import { Portfolio } from "@/components/homepage/portfolio";
 import { Socials } from "@/components/homepage/socials";
 import { AdminLink } from "@/components/homepage/admin-link";
+import { Prefetch } from "@/components/prefetch";
 
 export default function Homepage() {
   return (
@@ -10,6 +11,7 @@ export default function Homepage() {
       <Portfolio />
       <Socials />
       <AdminLink />
+      <Prefetch />
     </main>
   );
 }

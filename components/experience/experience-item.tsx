@@ -21,6 +21,7 @@ export function ExperienceItem({ item }: { item: ExperienceType }) {
             width={144}
             height={144}
             className="object-contain w-full h-full"
+            priority
           />
         ) : (
           <span className="font-heading text-sm leading-none">

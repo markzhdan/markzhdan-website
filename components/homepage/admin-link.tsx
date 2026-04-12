@@ -11,7 +11,7 @@ export function AdminLink() {
   return (
     <Link
       href="/add-blog"
-      className="text-xs text-black/0 hover:text-black/30 transition-colors select-none"
+      className="fixed bottom-8 right-8 text-md text-black/0 hover:text-black transition-colors select-none"
       tabIndex={-1}
     >
       Add blog

@@ -10,7 +10,7 @@ export function Portfolio() {
       <PageLink name="Experience" href="/experience" />
       <PageLink name="Projects" href="/projects" />
       <PageLink name="Blogs" href="/blogs" />
-      <ExternalLink name="Resume" href="/Mark_Zhdan_Resume_2026.pdf" />
+      <ExternalLink name="Resume" href="/Mark_Zhdan_Resume.pdf" />
       </div>
     </section>
   );

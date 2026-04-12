@@ -31,7 +31,7 @@ export default function BlogsPage() {
   return (
     <main className="flex flex-col w-100 px-2.5 gap-6">
       <BackLink />
-      <Heading size="xl">Blog</Heading>
+      <Heading size="xl">Blogs</Heading>
 
       <section className="flex flex-col gap-2">
         <Heading>Articles</Heading>

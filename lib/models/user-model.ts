@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  username: { type: String, required: true, index: true },
+  username: { type: String, required: true, unique: true, index: true },
   password: { type: String, required: true }, // bcrypt hash — never plaintext
   isAdmin: { type: Boolean, default: false },
 });

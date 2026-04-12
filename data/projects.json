@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Curriculo",
+    "description": "An AI powered school app that automatically parses syllabi to organize deadlines, assignments, and courses.",
+    "links": [{ "linkTitle": "Visit Site", "link": "https://usecurriculo.com" }]
+  },
+  {
+    "name": "Post-Plant",
+    "description": "Analytical VALORANT web app created to help players improve and analyze their gameplay more effectively.",
+    "links": [{ "linkTitle": "Visit Site", "link": "https://postplant.app" }]
+  },
+  {
+    "name": "Valbility",
+    "description": "VALORANT voice and audio accessibility widget.",
+    "links": [
+      {
+        "linkTitle": "View GitHub",
+        "link": "https://github.com/markzhdan/Valbility"
+      }
+    ]
+  },
+  {
+    "name": "RocketPal",
+    "description": "Health based web app that placed first at UIC's Sparkhacks 2024 hackathon.",
+    "links": [
+      {
+        "linkTitle": "Devpost",
+        "link": "https://devpost.com/software/rocket-pal"
+      },
+      {
+        "linkTitle": "View GitHub",
+        "link": "https://github.com/markzhdan/RocketPal"
+      }
+    ]
+  },
+  {
+    "name": "Buff163 API Wrapper",
+    "description": "An unofficial Python API wrapper for Buff163, a CS skin marketplace.",
+    "links": [
+      {
+        "linkTitle": "View GitHub",
+        "link": "https://github.com/markzhdan/buff163-unofficial-api"
+      }
+    ]
+  },
+  {
+    "name": "VLR Rating Prediction",
+    "description": "Using machine learning analysis to predict VLR.gg's player ratings using competitive match data.",
+    "links": [
+      {
+        "linkTitle": "View GitHub",
+        "link": "https://github.com/markzhdan/reverse-eng-vlr-rating"
+      }
+    ]
+  },
+  {
+    "name": "Minecraft Plugins",
+    "description": "Server plugins used by 150+ players that introduced cosmetics, dimensions, and loot chests.",
+    "links": [
+      {
+        "linkTitle": "Cosmetics",
+        "link": "https://github.com/markzhdan/cosmetics"
+      },
+      {
+        "linkTitle": "Dimensions",
+        "link": "https://github.com/markzhdan/portal-codes"
+      },
+      {
+        "linkTitle": "Loot Chests",
+        "link": "https://github.com/markzhdan/farm-chest"
+      },
+      {
+        "linkTitle": "Discord Bot",
+        "link": "https://github.com/markzhdan/trial-discord-bot"
+      }
+    ]
+  }
+]

@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Design tokens ─────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-bebas);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Base reset ─────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Page wrapper ───────────────────────────────────────────── */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+/* ─── Prose (markdown content) ──────────────────────────────── */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-bebas), sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.prose h1 { font-size: 2.25rem; line-height: 1; }
+.prose h2 { font-size: 1.875rem; }
+.prose h3 { font-size: 1.5rem; }
+.prose h4 { font-size: 1.25rem; }
+.prose h5 { font-size: 1rem; }
+.prose h6 { font-size: 0.875rem; }
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+.prose code {
+  font-family: monospace;
+  font-style: normal;
+  font-size: 0.85em;
+  background: #f5f5f5;
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+
+.prose pre {
+  font-style: normal;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose blockquote {
+  border-left: 2px solid #000;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 2rem 0;
 }

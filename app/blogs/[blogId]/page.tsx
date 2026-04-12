@@ -28,30 +28,51 @@ export default function BlogViewerPage({
       .finally(() => setLoading(false));
   }, [blogId]);
 
-  const markdownComponents = useMemo(() => ({
-    code({ className, children, ...props }: React.ComponentPropsWithoutRef<"code">) {
-      const match = /language-(\w+)/.exec(className || "");
-      if (!match) return <code className={className} {...props}>{children}</code>;
-      return (
-        <SyntaxHighlighter style={oneLight} language={match[1]} PreTag="div" customStyle={{ margin: 0 }}>
-          {String(children).replace(/\n$/, "")}
-        </SyntaxHighlighter>
-      );
-    },
-  }), []);
+  const markdownComponents = useMemo(
+    () => ({
+      code({
+        className,
+        children,
+        ...props
+      }: React.ComponentPropsWithoutRef<"code">) {
+        const match = /language-(\w+)/.exec(className || "");
+        if (!match)
+          return (
+            <code className={className} {...props}>
+              {children}
+            </code>
+          );
+        return (
+          <SyntaxHighlighter
+            style={oneLight}
+            language={match[1]}
+            PreTag="div"
+            customStyle={{ margin: 0 }}
+          >
+            {String(children).replace(/\n$/, "")}
+          </SyntaxHighlighter>
+        );
+      },
+    }),
+    []
+  );
 
   const isDaily = blog?.type === "daily";
 
   if (loading) {
     return (
-      <main className="flex flex-col px-2.5 gap-6 w-100">
+      <main className="flex flex-col px-2.5 gap-6 w-full max-w-100">
         <Loading />
       </main>
     );
   }
 
   return (
-    <main className={`flex flex-col px-2.5 gap-6 ${isDaily ? "w-100" : "w-150"}`}>
+    <main
+      className={`flex flex-col px-2.5 gap-6 w-full ${
+        isDaily ? "max-w-100" : "max-w-150"
+      }`}
+    >
       <BackLink />
       {blog === null ? (
         <p className="text-sm">No entry found.</p>

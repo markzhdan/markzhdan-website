@@ -42,7 +42,9 @@ function CalendarContent() {
 
   function handleMonthChange(newMonth: Date) {
     setMonth(newMonth);
-    const param = `${newMonth.getFullYear()}-${String(newMonth.getMonth() + 1).padStart(2, "0")}`;
+    const param = `${newMonth.getFullYear()}-${String(
+      newMonth.getMonth() + 1
+    ).padStart(2, "0")}`;
     window.history.replaceState(null, "", `${pathname}?month=${param}`);
   }
 
@@ -71,7 +73,11 @@ function CalendarContent() {
         }
         modifiers={{ available: availableDates }}
         modifiersStyles={{
-          available: { backgroundColor: "#000000", color: "#ffffff", borderRadius: "50%" },
+          available: {
+            backgroundColor: "#000000",
+            color: "#ffffff",
+            borderRadius: "50%",
+          },
         }}
         style={
           {
@@ -86,7 +92,7 @@ function CalendarContent() {
 
 export default function DailyBlogsPage() {
   return (
-    <main className="flex flex-col w-100 px-2.5 gap-6">
+    <main className="flex flex-col w-full max-w-100 px-2.5 gap-6">
       <Suspense fallback={<Loading />}>
         <CalendarContent />
       </Suspense>

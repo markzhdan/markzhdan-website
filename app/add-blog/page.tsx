@@ -10,14 +10,18 @@ export default function AddBlogPage() {
 
   if (loading) {
     return (
-      <main className="w-100 px-2.5">
+      <main className="w-full max-w-100 px-2.5">
         <Loading />
       </main>
     );
   }
 
   return (
-    <main className={`flex flex-col px-2.5 gap-6 ${isAdmin ? "w-215" : "w-100"}`}>
+    <main
+      className={`flex flex-col px-2.5 gap-6 w-full ${
+        isAdmin ? "max-w-215" : "max-w-100"
+      }`}
+    >
       {isAdmin ? <BlogEditor /> : <BlogLogin onLogin={signIn} />}
     </main>
   );

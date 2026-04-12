@@ -1,8 +1,9 @@
 "use client";
 
 import "react-day-picker/src/style.css";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import useSWR from "swr";
 import { DayPicker } from "react-day-picker";
 import { BackLink } from "@/components/back-link";
 import { Heading } from "@/components/heading";
@@ -14,9 +15,6 @@ function CalendarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [availableDates, setAvailableDates] = useState<Date[]>([]);
-  const [loading, setLoading] = useState(true);
-
   const [month, setMonth] = useState<Date>(() => {
     const m = searchParams.get("month");
     if (m) {
@@ -26,19 +24,12 @@ function CalendarContent() {
     return new Date();
   });
 
-  useEffect(() => {
-    fetchBackend("/daily-blogs/list")
-      .then((dates: string[]) => {
-        setAvailableDates(
-          dates.map((d) => {
-            const [mo, day, year] = d.split("-").map(Number);
-            return new Date(year, mo - 1, day);
-          })
-        );
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
+  const { data: rawDates, isLoading } = useSWR<string[]>("/daily-blogs/list", fetchBackend);
+
+  const availableDates = (rawDates ?? []).map((d) => {
+    const [mo, day, year] = d.split("-").map(Number);
+    return new Date(year, mo - 1, day);
+  });
 
   function handleMonthChange(newMonth: Date) {
     setMonth(newMonth);
@@ -56,7 +47,7 @@ function CalendarContent() {
     router.push(`/blogs/${mo}-${day2}-${year}`);
   }
 
-  if (loading) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <>

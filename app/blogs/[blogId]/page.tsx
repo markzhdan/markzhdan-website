@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { use } from "react";
+import useSWR from "swr";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -18,15 +19,7 @@ export default function BlogViewerPage({
 }) {
   const { blogId } = use(params);
 
-  const [blog, setBlog] = useState<BlogResponse>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchBackend(`/daily-blogs/${blogId}`)
-      .then((data: BlogResponse) => setBlog(data))
-      .catch(() => setBlog(null))
-      .finally(() => setLoading(false));
-  }, [blogId]);
+  const { data: blog, isLoading } = useSWR<BlogResponse>(`/daily-blogs/${blogId}`, fetchBackend);
 
   const markdownComponents = useMemo(
     () => ({
@@ -59,7 +52,7 @@ export default function BlogViewerPage({
 
   const isDaily = blog?.type === "daily";
 
-  if (loading) {
+  if (isLoading) {
     return (
       <main className="flex flex-col px-2.5 gap-6 w-full max-w-100">
         <Loading />
@@ -74,7 +67,7 @@ export default function BlogViewerPage({
       }`}
     >
       <BackLink />
-      {blog === null ? (
+      {!blog ? (
         <p className="text-sm">No entry found.</p>
       ) : (
         <article className="prose text-sm leading-relaxed [&_h1]:font-heading [&_h2]:font-heading [&_h3]:font-heading [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5">

@@ -5,4 +5,4 @@
 - [ ] Add support for editing blogs
 - [ ] Add support for adding daily AND article blogs
 - [ ] Overall, better blog backup support
-- [ ] Cache blogs or something (back arrow), so loading doesnt always happen
+- [ x ] Cache blogs or something (back arrow), so loading doesnt always happen

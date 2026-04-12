@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { BackLink } from "@/components/back-link";
 import { Heading } from "@/components/heading";
 import { PageLink } from "@/components/page-link";
@@ -10,17 +10,9 @@ import { fetchBackend } from "@/lib/api";
 type Article = { slug: string; title: string | null };
 
 export default function BlogsPage() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: articles, isLoading } = useSWR<Article[]>("/blogs", fetchBackend);
 
-  useEffect(() => {
-    fetchBackend("/blogs")
-      .then((data: Article[]) => setArticles(data))
-      .catch(() => setArticles([]))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <main className="flex flex-col w-full max-w-100 px-2.5 gap-6">
         <Loading />
@@ -35,7 +27,7 @@ export default function BlogsPage() {
 
       <section className="flex flex-col gap-2">
         <Heading>Articles</Heading>
-        {articles.map((article) => (
+        {(articles ?? []).map((article) => (
           <PageLink
             key={article.slug}
             name={article.title ?? article.slug}

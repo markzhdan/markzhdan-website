@@ -7,7 +7,7 @@ import { checkRateLimit } from "@/lib/rate-limit";
 // @route   GET /api/daily-blogs/:slug
 // @access  Public
 export const GET = withDB(async (req, context) => {
-  checkRateLimit(req, 30, 60);
+  checkRateLimit(req, 60, 60);
 
   const { date: slug } = await context.params;
 
@@ -22,5 +22,9 @@ export const GET = withDB(async (req, context) => {
   const blog = await Blog.findOne({ slug });
   if (!blog) return NextResponse.json(null);
 
-  return NextResponse.json({ type: blog.type, content: blog.content });
+  return NextResponse.json({
+    type: blog.type,
+    title: blog.title ?? null,
+    content: blog.content,
+  });
 });

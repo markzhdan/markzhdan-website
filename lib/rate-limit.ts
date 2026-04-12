@@ -26,12 +26,14 @@ function getIP(request: Request): string | null {
   return null;
 }
 
-// Normalize dynamic path segments so that all requests to the same logical
-// route share one bucket. Without this, /api/daily-blogs/04-11-2026 and
-// /api/daily-blogs/04-12-2026 would each get their own independent counter,
-// letting an attacker enumerate dates without ever hitting a limit.
+// Normalize the dynamic slug under /api/daily-blogs/ so all blog reads (both
+// date slugs like 04-11-2026 and article slugs like my-post) share one bucket.
+// Scoped narrowly to avoid accidentally merging static routes like /api/daily-blogs/list.
 function normalizePathname(pathname: string): string {
-  return pathname.replace(/\/\d{2}-\d{2}-\d{4}(?=\/|$)/g, "/[date]");
+  return pathname.replace(
+    /^(\/api\/daily-blogs\/)(?!list$)[a-zA-Z0-9_-]+$/,
+    "$1[slug]"
+  );
 }
 
 // Sweep expired entries when the store grows large to prevent unbounded memory
@@ -51,7 +53,9 @@ export function checkRateLimit(
   // so local testing isn't disrupted.
   if (!ip) {
     if (process.env.NODE_ENV === "production") {
-      const error = new Error("Too many requests") as Error & { status: number };
+      const error = new Error("Too many requests") as Error & {
+        status: number;
+      };
       error.status = 429;
       throw error;
     }

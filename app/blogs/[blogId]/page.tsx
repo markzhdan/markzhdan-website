@@ -6,9 +6,11 @@ import useSWR from "swr";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Link from "next/link";
 import { BackLink } from "@/components/back-link";
 import { Loading } from "@/components/loading";
 import { fetchBackend } from "@/lib/api";
+import { useAdminAuth } from "@/hooks/use-admin-auth";
 
 type BlogResponse = { type: "daily" | "article"; content: string } | null;
 
@@ -18,8 +20,12 @@ export default function BlogViewerPage({
   params: Promise<{ blogId: string }>;
 }) {
   const { blogId } = use(params);
+  const { isAdmin } = useAdminAuth();
 
-  const { data: blog, isLoading } = useSWR<BlogResponse>(`/daily-blogs/${blogId}`, fetchBackend);
+  const { data: blog, isLoading } = useSWR<BlogResponse>(
+    `/daily-blogs/${blogId}`,
+    fetchBackend
+  );
 
   const markdownComponents = useMemo(
     () => ({
@@ -66,7 +72,17 @@ export default function BlogViewerPage({
         isDaily ? "max-w-100" : "max-w-150"
       }`}
     >
-      <BackLink />
+      <div className="flex items-center justify-between">
+        <BackLink />
+        {isAdmin && (
+          <Link
+            href={`/add-blog?slug=${blogId}`}
+            className="font-heading text-sm uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity no-underline"
+          >
+            Edit
+          </Link>
+        )}
+      </div>
       {!blog ? (
         <p className="text-sm">No entry found.</p>
       ) : (

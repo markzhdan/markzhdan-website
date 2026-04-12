@@ -9,15 +9,11 @@ export function AboutMe() {
         <a href="https://www.blinkfire.com" target="_blank" rel="noreferrer">
           Blinkfire Analytics
         </a>
-        . I also built{" "}
-        <a href="https://usecurriculo.com" target="_blank" rel="noreferrer">
-          Curriculo
-        </a>{" "}
-        to help students get organized. Visit{" "}
+        , based in Chicago. Built{" "}
         <a href="https://postplant.app" target="_blank" rel="noreferrer">
           Post-Plant
         </a>{" "}
-        to get better at VALORANT.
+        to help players get better at VALORANT.
       </p>
     </section>
   );

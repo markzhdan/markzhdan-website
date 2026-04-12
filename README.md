@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<a name="readme-top"></a>
 
-## Getting Started
+<br />
+<div align="center">
+<h3 align="center">markzhdan.com</h3>
+  <p align="center">
+    <b>Personal website - projects, blog, and resume.</b>
+    <br />
+    <a href="https://markzhdan.com"><strong>markzhdan.com »</strong></a>
+  </p>
+</div>
 
-First, run the development server:
+<div align="center">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[![Next.js][nextjs-shield]][nextjs-url]
+[![MongoDB][mongo-shield]][mongo-url]
+[![Vercel][vercel-shield]][vercel-url]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+</div>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+- **Framework** - Next.js 16 (App Router)
+- **Database** - MongoDB Atlas
+- **Styling** - Tailwind CSS
+- **Auth** - JWT (admin-only)
+- **Deployment** - Vercel
 
-To learn more about Next.js, take a look at the following resources:
+## Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/` - About, projects, socials, resume
+- `/experience` - Work history
+- `/projects` - Portfolio of projects
+- `/blogs` - Articles and daily log
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<!-- MARKDOWN LINKS -->
+[nextjs-shield]: https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[nextjs-url]: https://nextjs.org
+[mongo-shield]: https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white
+[mongo-url]: https://www.mongodb.com/atlas
+[vercel-shield]: https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white
+[vercel-url]: https://vercel.com

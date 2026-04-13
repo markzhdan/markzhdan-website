@@ -24,7 +24,10 @@ function CalendarContent() {
     return new Date();
   });
 
-  const { data: rawDates, isLoading } = useSWR<string[]>("/daily-blogs/list", fetchBackend);
+  const { data: rawDates, isLoading } = useSWR<string[]>(
+    "/daily-blogs/list",
+    fetchBackend
+  );
 
   const availableDates = (rawDates ?? []).map((d) => {
     const [mo, day, year] = d.split("-").map(Number);
@@ -51,7 +54,7 @@ function CalendarContent() {
 
   return (
     <>
-      <BackLink />
+      <BackLink href="/blogs" />
       <Heading size="xl">Daily</Heading>
       <DayPicker
         mode="single"

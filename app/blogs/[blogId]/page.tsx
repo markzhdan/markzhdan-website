@@ -57,6 +57,9 @@ export default function BlogViewerPage({
   );
 
   const isDaily = blog?.type === "daily";
+  const backHref = isDaily
+    ? `/blogs/daily-blogs?month=${blogId.slice(6)}-${blogId.slice(0, 2)}`
+    : "/blogs";
 
   if (isLoading) {
     return (
@@ -73,7 +76,7 @@ export default function BlogViewerPage({
       }`}
     >
       <div className="flex items-center justify-between">
-        <BackLink />
+        <BackLink href={backHref} />
         {isAdmin && (
           <Link
             href={`/add-blog?slug=${blogId}`}
